@@ -9,6 +9,7 @@ class Result extends React.Component{
 
     }
 
+
     render(){
         return(
             <div className="panel panel-default">
@@ -16,20 +17,18 @@ class Result extends React.Component{
                     <h3 className="panel-title">Result</h3>
                 </div>
                 <div className="panel-body">
-                    <div className="info">
-                        <p>Alien Invade Paris</p>
-                        <button className="btn btn-default">Save</button>
-                    </div>
 
-                    <div className="info">
-                        <p>Obama Gives Commencement</p>
-                        <button className="btn btn-default">Save</button>
-                    </div>
+                    {this.props.results.map(({_id, lead_paragraph, web_url, headline}) => (
+                        <div className="info" key= {_id}>
+                            <div className="col">
+                                <h2>{headline.main}</h2>
+                                <p>{lead_paragraph}</p>
+                                <a href={web_url} target="_blank">{web_url}</a>
+                            </div>
+                            <button className="btn btn-default">Save</button>
+                        </div>
+                    ))}
 
-                    <div className="info">
-                        <p>Trump Steals Nuclear Codes</p>
-                        <button className="btn btn-default">Save</button>
-                    </div>
                 </div>
             </div>
         );

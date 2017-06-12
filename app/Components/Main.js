@@ -9,10 +9,33 @@ var Search = require("./Search");
 var Result = require("./Result");
 var Saved = require("./Saved");
 
+
 class Main extends React.Component{
     constructor(){
         super();
+
+        this.state = {
+            topic:'',
+            startYear: 0,
+            endYear:'',
+            data: []
+        };
+        this.setParent = this.setParent.bind(this);
     }
+
+    setParent(data){
+        this.setState({data: data});
+        console.log(this.state.data);
+
+        // var result = this.state.data;
+        //
+        // console.log(result);
+
+        // result.map(function (el, index) {
+        //     console.log(el);
+        // });
+    }
+
 
     render(){
         return(
@@ -23,8 +46,8 @@ class Main extends React.Component{
                     <p>Search for and annotate articles of interest!</p>
                 </div>
 
-                <Search />
-                <Result />
+                <Search setParent = {this.setParent}/>
+                <Result results = {this.state.data}/>
                 <Saved />
 
             </div>
